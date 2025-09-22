@@ -96,10 +96,9 @@ Follow these steps to run the **FreshCast - Food Waste AI** project after clonin
   py app.py
   ```
 - The program will:  
-  1. Load the dataset.  
-  2. Train the models (Linear Regression, Ridge, Random Forest, MLP).  
-  3. Show evaluation results (MSE, RMSE, MAE, R²).  
-  4. Save the trained model for future use.  
+  1. Give UI localhost link.
+  2. You can open the link in browser.
+  3. And explore it by giving different inputs. 
 
 ---
 
