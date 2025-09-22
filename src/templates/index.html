@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FreshCast Waste Prediction</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f2f5f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2E8B57;
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .form-group {
+            flex: 1 1 45%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input[type=number], select {
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        .full-width {
+            flex: 1 1 100%;
+        }
+
+        input[type=submit] {
+            background-color: #2E8B57;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type=submit]:hover {
+            background-color: #246B45;
+        }
+
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #e6f5ea;
+            border-left: 6px solid #2E8B57;
+            border-radius: 10px;
+        }
+
+        .result h2 {
+            margin: 0;
+            color: #2E8B57;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>FreshCast Waste Prediction</h1>
+
+        <form method="post" action="/">
+            <!-- Item Name -->
+            <div class="form-group">
+                <label>Item:</label>
+                <select name="item_name">
+                    {% for i in items %}
+                        <option value="{{ i }}" {% if form_values['item_name']==i %}selected{% endif %}>{{ i }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Category -->
+            <div class="form-group">
+                <label>Category:</label>
+                <select name="category">
+                    {% for c in categories %}
+                        <option value="{{ c }}" {% if form_values['category']==c %}selected{% endif %}>{{ c }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Day of Week -->
+            <div class="form-group">
+                <label>Day of Week:</label>
+                <select name="day_of_week">
+                    {% for d in days %}
+                        <option value="{{ d }}" {% if form_values['day_of_week']==d %}selected{% endif %}>{{ d }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Numeric Fields -->
+            {% for field in ['shelf_life_days','unit_price','stock_qty','sales_qty','returned_qty','discount_applied','month','holiday_flag','temperature','rainfall'] %}
+            <div class="form-group">
+                <label>{{ field.replace('_',' ').title() }}:</label>
+                <input type="number" name="{{ field }}" value="{{ form_values[field] }}">
+            </div>
+            {% endfor %}
+
+            <!-- Submit Button -->
+            <div class="form-group full-width">
+                <input type="submit" value="Predict Waste">
+            </div>
+        </form>
+
+        {% if predicted_waste is not none %}
+        <div class="result">
+            <h2>Predicted Waste: {{ predicted_waste|int }} items</h2>
+            <h2>Predicted Waste after Discount: {{ reduced_waste|int }} items</h2>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

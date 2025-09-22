@@ -8,6 +8,7 @@ from sklearn.linear_model import LinearRegression, Ridge
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.neural_network import MLPRegressor
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+import pickle
 
 # Step 2: Load dataset
 data = pd.read_csv("../data/food_waste_dataset.csv")
@@ -52,6 +53,12 @@ for name, model in models.items():
     r2 = r2_score(y_test, y_pred)
     
     results[name] = {"MSE": mse, "RMSE": rmse, "MAE": mae, "R2": r2}
+
+#Save the trained model to a .pkl file
+with open("linear_model.pkl", "wb") as f:
+    pickle.dump(models["Linear Regression"], f)
+
+print("Linear Regression model saved as linear_model.pkl")
 
 # Print results
 for name, metrics in results.items():
