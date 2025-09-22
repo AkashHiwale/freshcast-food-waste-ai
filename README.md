@@ -16,12 +16,7 @@ It forecasts short-term demand, identifies items at risk of expiry, and recommen
 
 ## 🏗️ Project Scope
 - **Forecasting**: Daily demand prediction for SKUs (e.g., milk, bread, fruits).  
-- **Dynamic Pricing**: Suggest discounts to sell products before expiry.  
-- **Visualization**: Streamlit dashboard with:  
-  - Sales & forecast charts  
-  - Stock vs expiry alerts  
-  - Recommended markdown table  
-  - Waste reduction KPIs  
+- **Dynamic Pricing**: Suggest discounts to sell products before expiry.   
 
 ---
 
@@ -34,5 +29,90 @@ It forecasts short-term demand, identifies items at risk of expiry, and recommen
 
 ---
 
-## 🚀 How to Run (to be added later)
-Detailed steps on installing dependencies, running the model, and launching the dashboard will be provided once the implementation is complete.
+## 🚀 How to Run  
+
+Follow these steps to run the **FreshCast - Food Waste AI** project after cloning the repository.  
+
+---
+
+### 1. Install Python  
+- Make sure **Python 3.9 or above** is installed.  
+- You can check by opening a terminal/command prompt and typing:  
+  ```bash
+  py --version
+  ```
+- If not installed, download it from [Python Official Website](https://www.python.org/downloads/).  
+
+---
+
+### 2. Clone the Repository  
+- Go to GitHub link: [FreshCast Repo](https://github.com/AkashHiwale/freshcast-food-waste-ai)  
+- Click the green **Code** button → **Download ZIP**  
+- Extract the ZIP file to your computer (e.g., Desktop).  
+- Or if you know Git, run:  
+  ```bash
+  git clone https://github.com/AkashHiwale/freshcast-food-waste-ai.git
+  ```
+
+---
+
+### 3. Open Project Folder  
+- Go to the folder where you extracted/cloned the project.  
+- Example:  
+  ```
+  C:\Users\YourName\Desktop\freshcast-food-waste-ai
+  ```
+
+---
+
+### 4. Create a Virtual Environment (Recommended)  
+- In terminal/command prompt, run:  
+  ```bash
+  python -m venv venv
+  ```
+- Activate it:  
+  - **Windows**:  
+    ```bash
+    venv\Scripts\activate
+    ```
+  - **Mac/Linux**:  
+    ```bash
+    source venv/bin/activate
+    ```
+
+---
+
+### 5. Install Dependencies  
+- Run the following command:  
+  ```bash
+  py -m pip install -r requirements.txt
+  ```
+
+---
+
+### 6. Run the Project  
+- After installing, simply run:  
+  ```bash
+  py app.py
+  ```
+- The program will:  
+  1. Load the dataset.  
+  2. Train the models (Linear Regression, Ridge, Random Forest, MLP).  
+  3. Show evaluation results (MSE, RMSE, MAE, R²).  
+  4. Save the trained model for future use.  
+
+---
+
+### 7. View Graphs  
+- If graphs are included, they will pop up automatically.  
+- Close the graph window to continue.  
+
+---
+
+### 8. Done 🎉  
+You have successfully run the Food Waste AI project!  
+
+---
+
+📌 **Tip:**  
+Next time, you only need to run steps **4 → 6**. No need to reinstall everything.
